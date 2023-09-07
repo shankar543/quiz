@@ -18,19 +18,28 @@ body {
 
 .main {
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    width: 100%;
     align-items: center;
     font-family: 'Roboto';
     max-width: 100%;
     margin: 2%;
 
     overflow: auto;
+}
+
+.main>* {
+    flex: 1, 1, 100%;
+}
+
+.main .controls :not(#submit) {
+    flex: 0, 1, 50%;
 }
 
 .main>h1 {
@@ -45,18 +54,19 @@ body {
     justify-content: space-between;
     align-content: center;
     max-width: 100%;
-    overflow: hidden;
+    overflow: auto;
     box-shadow: 0 0 13px 4px rgba(0, 0, 0, 0.7);
-
+    max-height: 100%;
 }
 
 .container ul {
     list-style-type: none;
-    margin-top: 0.3em
+
+    margin-top: 0.4em;
 }
 
 .container ul>li {
-    margin-left: 0.5em;
+    max-height: 25%;
 }
 
 .container ul li:hover {
@@ -99,7 +109,12 @@ body {
 
 #question {
     text-align: left;
-    min-height: 30%;
+    max-height: 73%;
+    position: sticky;
+    height: auto;
+
+    word-wrap: break-word;
+    top: 0;
 }
 
 #question.showinganswer {
@@ -132,7 +147,6 @@ body {
 
 button {
     display: block;
-    height: 3em;
     width: fit-content;
     border: none;
     background-color: green;
@@ -140,12 +154,13 @@ button {
     font-weight: 800;
     font-size: 0.7em;
     cursor: pointer;
-    margin: 0.5em 0.5em;
+    margin: 0.5em auto;
     line-height: 1em;
     letter-spacing: 3px;
     border-radius: 8px;
     font-family: 'Roboto';
     padding: 0.2em;
+    width: 80%;
 }
 
 button:hover {
@@ -164,7 +179,7 @@ h1 {
     text-shadow: 0 0 2px #fff;
 }
 
-.container>h3, p {
+.container>h1, p {
     padding: 1em;
     text-align: left;
     background-color: black;
@@ -174,7 +189,7 @@ h1 {
     overflow: auto;
 }
 
-.container>h3 {
+.container>h1 {
     margin-top: 1em;
 }
 
@@ -187,11 +202,16 @@ h1 {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    max-width: 85%;
+    margin-bottom: 3em;
 }
+
 
 .controls button {
     flex-grow: 1;
-    flex-basis: 8em;
+    flex-basis: 100%;
+    padding: 1em;
+    margin: 0.4em;
 }
 
 .showanswerenabled {

@@ -34,14 +34,15 @@ async function loadQuizzData() {
 function displayCurrentQuestion() {
     if(currentQuestionIndex==quizzdata.length){
      container.innerHTML=`<h3>quizz completed</h3><p>you have scored ${score}/${quizzdata.length}.</p><button onclick='document.location.reload()'>start quizz</button>`
-    return;
+        submit.remove();
+        return;
     }
     resetOptions();
     let qtn = quizzdata[currentQuestionIndex];
         question.classList.remove('showinganswer');
         submit.classList.remove('showanswerenabled');
-    if (container.querySelector(".controls #nextqtnbtn")) {
-        container.querySelector(".controls #nextqtnbtn").remove();
+    if (document.querySelector(".controls #nextqtnbtn")) {
+        document.querySelector(".controls #nextqtnbtn").remove();
     }
     container.querySelectorAll('ul li').forEach(li => {
         li.style.backgroundColor = 'transparent';
@@ -92,6 +93,7 @@ let {isSelected,useranswer} = isAnswered()
     if (isSelected) {
     if(currentQuestionIndex==quizzdata.length){
      container.innerHTML=`<h3>quizz completed</h3><p>you have scored ${score}/${quizzdata.length}.</p><button onclick='document.location.reload()'>start quizz</button>`
+    document.querySelector(".controls #nextqtnbtn").remove()
     return;
     }
         if (showAnswersBydefault) {
@@ -122,12 +124,16 @@ if(opt.value == quizzdata[currentQuestionIndex].correctAnswer){
 });
     question.innerHTML=""
     let showAnswerText =  quizzdata[currentQuestionIndex]?.explanation;
-      showAnswerText.split('\n').forEach(line => {
-          let tab = document.createElement('div');
-          tab.classList.add('explination_steps');
-          tab.innerText = line;
-          question.appendChild(tab);
-    })
+    showAnswerText?.split('\n').forEach(line => {
+        let tab = document.createElement('div');
+        tab.classList.add('explination_steps');
+        tab.innerText = line;
+        question.appendChild(tab);
+    });
+    if (!showAnswerText) {
+        question.innerText= "Explination is unavailble to this question \n please proceed to next question"
+    }
+    
     question.classList.add('showinganswer');
     submit.classList.add('showanswerenabled');
     let nextqtn = document.createElement("button");
@@ -137,8 +143,8 @@ if(opt.value == quizzdata[currentQuestionIndex].correctAnswer){
         currentQuestionIndex++;
         loadQuiz();
     }
-    if (!container.querySelector(".controls #nextqtnbtn")) {
-        container.querySelector('.controls').appendChild(nextqtn);
+    if (!document.querySelector(".controls #nextqtnbtn")) {
+         document.querySelector('.controls').appendChild(nextqtn);
     }
 }
 loadQuiz();
