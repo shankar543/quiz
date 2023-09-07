@@ -24,13 +24,17 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 56%;
+    height: 100%;
     align-items: center;
-    font-family: 'Poppins';
+    font-family: 'Roboto';
     max-width: 100%;
     margin: 2%;
-    width: 100%;
+
     overflow: auto;
+}
+
+.main>h1 {
+    margin-top: 2em;
 }
 
 .container {
@@ -42,18 +46,26 @@ body {
     align-content: center;
     max-width: 100%;
     overflow: hidden;
-    width: 95%;
-    height: 100%;
     box-shadow: 0 0 13px 4px rgba(0, 0, 0, 0.7);
-    overflow: auto;
+
 }
 
 .container ul {
     list-style-type: none;
+    margin-top: 0.3em
 }
 
 .container ul>li {
     margin-left: 0.5em;
+}
+
+.container ul li:hover {
+    background-color: bisque;
+    cursor: pointer;
+}
+
+.container ul li label:hover {
+    cursor: pointer;
 }
 
 .container ul>li>label {
@@ -65,6 +77,7 @@ body {
 
     width: 1em;
     height: 1em;
+    margin-left: 0.4em;
 }
 
 .options {
@@ -80,14 +93,19 @@ body {
 .optiontext {
     font-size: 0.2em;
     font-weight: 100;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Roboto', Geneva, Tahoma, sans-serif;
     cursor: pointer;
 }
 
 #question {
-    text-align: center;
+    text-align: left;
+    min-height: 30%;
+}
 
-
+#question.showinganswer {
+    background-color: green;
+    color: white;
+    height: 100%;
 }
 
 #question::first-letter {
@@ -98,16 +116,36 @@ body {
     font-weight: 800;
 }
 
+.explination_steps:nth-child(even) {
+    background-color: rgb(129 0 0);
+}
+
+.explination_steps:nth-child(odd) {
+    background-color: transparent;
+}
+
+.explination_steps::first-letter {
+    color: black;
+    font-size: 1.3em;
+    text-transform: capitalize;
+}
+
 button {
     display: block;
     height: 3em;
-    width: 100%;
+    width: fit-content;
     border: none;
     background-color: green;
     color: white;
     font-weight: 800;
     font-size: 0.7em;
     cursor: pointer;
+    margin: 0.5em 0.5em;
+    line-height: 1em;
+    letter-spacing: 3px;
+    border-radius: 8px;
+    font-family: 'Roboto';
+    padding: 0.2em;
 }
 
 button:hover {
@@ -127,10 +165,36 @@ h1 {
 }
 
 .container>h3, p {
-    padding: 0;
-    text-align: center;
+    padding: 1em;
+    text-align: left;
+    background-color: black;
+    color: white;
+    font-weight: 400;
+    letter-spacing: 2px;
+    overflow: auto;
 }
 
 .container>h3 {
     margin-top: 1em;
+}
+
+.display_none {
+    display: none;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls button {
+    flex-grow: 1;
+    flex-basis: 8em;
+}
+
+.showanswerenabled {
+    pointer-events: none;
+    cursor: not-allowed;
 }

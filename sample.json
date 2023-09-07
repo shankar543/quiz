@@ -1,0 +1,399 @@
+[
+    {
+    "question": "type of null in javascript?",
+    "options": {
+      "a": "function",
+      "b": "object",
+      "c": "string",
+      "d": "none of the above"
+    },
+    "correctAnswer": "b"
+  },
+  {
+    "question": "variables of type 'var' can be redeclared?",
+    "options": {
+      "a": "yes",
+      "b": "no",
+      "c": "not sure",
+      "d": "none of the above"
+    },
+    "correctAnswer": "a"
+  },
+  {
+    "question": "which of the below is not a string object function",
+    "options": {
+      "a": "subStr",
+      "b": "substring",
+      "c": "slice",
+      "d": "reverse"
+    },
+    "correctAnswer": "d"
+  },
+  {
+    "question": "which of the below functions are not related to iteration of array",
+    "options": {
+      "a": "filter",
+      "b": "map",
+      "c": "find",
+      "d": "indexOf"
+    },
+    "correctAnswer": "d"
+  },
+  {
+    "question": "which of the statement is not valid inside Array.forEach method?",
+    "options": {
+      "a": "declaring a variable",
+      "b": "assigning value to a variable",
+      "c": "returning a statement",
+      "d": "calling a function"
+    },
+    "correctAnswer": "c"
+  }
+,
+    {
+        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = function objectchangerfunction() {\n    return this.name + ' ' + this.surname;\nconsole.log(obj.fullname()) \n what is the output of console log}",
+        "options": {
+            "a": "vijay janapareddi",
+            "b": "undefined",
+            "c": "error",
+            "d": "none of the above"
+        },
+        "correctAnswer": "a"
+    },
+    {
+        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = function() {\n    return this.name + ' ' + this.surname;\n}\nconsole.log(obj.fullname()) \n what is the output of console log",
+        "options": {
+            "a": "vijay janapareddi",
+            "b": "undefined",
+            "c": "error",
+            "d": "none of the above"
+        },
+        "correctAnswer": "a"
+    },
+    {
+        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = () => {\n    return this.name + ' ' + this.surname;\nconsole.log(obj.fullname()) \n what is the output of console log}",
+        "options": {
+            "a": "vijay janapareddi",
+            "b": "undefined undefined",
+            "c": "error",
+            "d": "none of the above"
+        },
+        "correctAnswer": "b",
+        "explanation": "In JavaScript, the value of this inside an arrow function is determined by the surrounding lexical context (i.e., the context in which the arrow function is defined), and it does not have its own this. This behavior is different from regular functions, which have their own this context.\nThe arrow function fullname is defined within the context of the obj object, but arrow functions do not have their own this context. Instead, they capture the this value from their enclosing lexical scope, which, in this case, is the global or outer context (usually the window object in a browser or the global object in Node.js). Since the global context does not have a name or surname property, this.name and this.surname both evaluate to undefined."
+    },
+    {
+        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = function() {\n    return this.name + ' ' + this.surname;\n}\nlet person = Object.assign({ city: 'vizag' }, obj);\nconsole.log(person)",
+        "options": {
+            "a": "{ city: 'vizag', name: 'vijay', age: 22, surname: 'janapareddi', fullname: [Function] }",
+            "b": "{ city: 'hyderabad', name: 'vijay', age: 22, surname: 'janapareddi', fullname: [Function] }",
+            "c": "{ city: undefined, name: 'vijay', age: 22, surname: 'janapareddi', fullname: [Function] }",
+            "d": "{ city: 'vizag', name: 'vijay', age: undefined, surname: 'janapareddi', fullname: [Function] }"
+        },
+        "correctAnswer": "a"
+    },
+    {
+        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = function() {\n    return this.name + ' ' + this.surname;\n}\nlet person = Object.assign({ city: 'vizag' }, obj);\nperson.name = 'kiran';\nconsole.log(obj.name);",
+        "options": {
+            "a": "vijay",
+            "b": "banu",
+            "c": "undefined",
+            "d": "error"
+        },
+        "correctAnswer": "a"
+    },
+    {
+        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = function() {\n    return this.name + ' ' + this.surname;\n}\nlet person = Object.create(obj);\nconsole.log(person);",
+        "options": {
+            "a": "{}",
+            "b": "undefined",
+            "c": "Error",
+            "d": "{ city: 'vizag', name: 'vijay', age: 22, surname: 'janapareddi', fullname: [Function] }"
+        },
+        "correctAnswer": "a",
+        "explanation": "In the provided code, you are creating a new object 'person' using 'Object.create(obj)'. This means that 'person' is an empty object that inherits properties from 'obj'. When you log 'person' to the console, it appears as '{}', which represents an empty object. The 'person' object inherits properties like 'name', 'age', 'surname', and 'fullname' from 'obj', but it doesn't have its own properties, which is why it appears as an empty object."
+    },
+    {
+        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = function() {\n    return this.name + ' ' + this.surname;\n}\nlet person = Object.create(obj);\nif (person != {}) {\n    console.log('person is not empty');\n} else {\n    console.log('person is empty');\n}",
+        "options": {
+            "a": "person is not empty",
+            "b": "person is empty",
+            "c": "undefined",
+            "d": "error"
+        },
+        "correctAnswer": "a",
+        "explanation": "In JavaScript, when you compare an object to an empty object using '!=', the comparison checks if the two objects are the same object in memory. In this case, 'person' and '{}' are two different objects, so the comparison evaluates to 'true'. Therefore, the correct answer is 'person is not empty'. This is because 'person' inherits properties from 'obj', so it is not empty even though it may appear empty when logged to the console."
+    },
+    {
+        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = function() {\n    return this.name + ' ' + this.surname;\n}\nlet person = Object.create(obj);\nif (person) {\n    console.log(Object.keys(person).length)\n}",
+        "options": {
+            "a": "1",
+            "b": "2",
+            "c": "0",
+            "d": "undefined"
+        },
+        "correctAnswer": "c",
+        "explanation": "In JavaScript, when you create an object using 'Object.create(obj)', the resulting 'person' object inherits properties from 'obj' but does not have any own properties. Therefore, 'Object.keys(person)' returns an empty array, and the length of that array is 0. So, the correct answer is 0, indicating that 'person' has no own properties."
+    },
+    {
+        "question": "// Question 1\nlet person = {\n    name: 'John',\n    age: 30\n};\n\nlet student = Object.create(person);\n\n// What is the prototype of the 'student' object?",
+        "options": {
+            "a": "Object.prototype",
+            "b": "person",
+            "c": "student.prototype",
+            "d": "null"
+        },
+        "correctAnswer": "c",
+        "explanation": "When 'Object.create(person)' is used, 'student' inherits properties from 'person'. Therefore, the prototype of the 'student' object is 'person'."
+    },
+    {
+        "question": "// Question 2\nfunction Car(make, model) {\n    this.make = make;\n    this.model = model;\n}\n\nCar.prototype.start = function() {\n    console.log(`Starting the ${this.make} ${this.model}.`);\n};\n\nlet myCar = new Car('Toyota', 'Camry');\n\n// What is the prototype of 'myCar'?",
+        "options": {
+            "a": "Car.prototype",
+            "b": "Object.prototype",
+            "c": "myCar.prototype",
+            "d": "null"
+        },
+        "correctAnswer": "a",
+        "explanation": "'myCar' was created using the 'Car' constructor, so its prototype is 'Car.prototype', which contains the 'start' method."
+    },
+    {
+        "question": "// Question 3\nlet person = {\n    name: 'Alice'\n};\n\nlet student = Object.create(person);\nstudent.age = 25;\n\n// Does the 'student' object have a direct property called 'name'?",
+        "options": {
+            "a": "Yes",
+            "b": "No"
+        },
+        "correctAnswer": "b",
+        "explanation": "The 'name' property is not directly defined on the 'student' object but is inherited from the 'person' object."
+    },
+    {
+        "question": "// Question 4\nfunction Circle(radius) {\n    this.radius = radius;\n}\n\nCircle.prototype.area = function() {\n    return Math.PI * this.radius * this.radius;\n};\n\nlet myCircle = new Circle(5);\n\n// How can you access the area of 'myCircle'?",
+        "options": {
+            "a": "myCircle.area",
+            "b": "myCircle.prototype.area",
+            "c": "myCircle.area()",
+            "d": "myCircle.prototype.area()"
+        },
+        "correctAnswer": "d",
+        "explanation": "To access the 'area' method of 'myCircle', you need to invoke it using parentheses '()'. So, it should be 'myCircle.area()'."
+    },
+    {
+        "question": "// Question 1\nfunction Dog(name) {\n    this.name = name;\n}\n\nconst myDog = new Dog('Buddy');\n\n// How do you access the 'name' property of 'myDog'?",
+        "options": {
+            "a": "myDog.name",
+            "b": "Dog.name",
+            "c": "myDog.prototype.name",
+            "d": "myDog.constructor.name"
+        },
+        "correctAnswer": "a",
+        "explanation": "To access the 'name' property of 'myDog', you use dot notation with 'myDog.name'."
+    },
+    {
+        "question": "// Question 2\nfunction greet() {\n    console.log(`Hello, ${this.name}!`);\n}\n\nconst person = {\n    name: 'Alice'\n};\n\nconst greetAlice = greet.bind(person);\n\n// What will calling 'greetAlice()' log to the console?",
+        "options": {
+            "a": "Hello, Alice!",
+            "b": "Hello, undefined!",
+            "c": "Error",
+            "d": "Nothing, it will not log anything."
+        },
+        "correctAnswer": "a",
+        "explanation": "The 'bind' method creates a new function ('greetAlice') that is bound to the 'person' object. When you call 'greetAlice()', it logs 'Hello, Alice!' to the console because it has access to the 'name' property of 'person'."
+    },
+    {
+        "question": "// Question 3\nfunction add(a, b) {\n    return a + b;\n}\n\nconst numbers = [1, 2];\n\nconst sum = add.apply(null, numbers);\n\n// What does 'sum' contain after executing this code?",
+        "options": {
+            "a": "3",
+            "b": "[1, 2]",
+            "c": "Error",
+            "d": "undefined"
+        },
+        "correctAnswer": "b",
+        "explanation": "The 'apply' method is used to invoke the 'add' function with the elements of the 'numbers' array as arguments. It calculates the sum, so 'sum' contains the value 3."
+    },
+    {
+        "question": "// Question 4\nfunction multiply(a, b) {\n    return a * b;\n}\n\nconst factors = [3, 4];\n\nconst product = multiply.call(null, ...factors);\n\n// What does 'product' contain after executing this code?",
+        "options": {
+            "a": "12",
+            "b": "[3, 4]",
+            "c": "Error",
+            "d": "undefined"
+        },
+        "correctAnswer": "a",
+        "explanation": "The 'call' method is used to invoke the 'multiply' function with the values in the 'factors' array as arguments. It calculates the product, so 'product' contains the value 12."
+    },
+    {
+        "question": "// Question 1\nfunction displayInfo(job, salary) {\n    console.log(`I am a ${job} and I earn ${salary} per year.`);\n}\n\nconst employee = {\n    name: 'Alice',\n    jobTitle: 'Software Developer',\n    annualSalary: 80000\n};\n\n// How can you use 'call' to display Alice's job and salary?",
+        "options": {
+            "a": "displayInfo.call(employee.jobTitle, employee.annualSalary)",
+            "b": "displayInfo.call(employee, employee.jobTitle, employee.annualSalary)",
+            "c": "displayInfo.call(employee, [employee.jobTitle, employee.annualSalary])",
+            "d": "displayInfo.call(employee, employee.jobTitle)"
+        },
+        "correctAnswer": "b",
+        "explanation": "The 'call' method takes the 'thisArg' as the first argument and the function arguments separated by commas. In this case, 'employee' is the 'thisArg', and 'employee.jobTitle' and 'employee.annualSalary' are the function arguments."
+    },
+    {
+        "question": "// Question 2\nfunction greet(greeting) {\n    console.log(`${greeting}, ${this.name}!`);\n}\n\nconst person = {\n    name: 'Bob'\n};\n\nconst customGreeting = greet.bind(person, 'Hello');\n\n// What will calling 'customGreeting()' log to the console?",
+        "options": {
+            "a": "'Hello, Bob!'",
+            "b": "'Hello, undefined!'",
+            "c": "Error",
+            "d": "Nothing, it will not log anything."
+        },
+        "correctAnswer": "a",
+        "explanation": "The 'bind' method creates a new function ('customGreeting') that is bound to the 'person' object with a predefined 'greeting'. When you call 'customGreeting()', it logs 'Hello, Bob!' to the console."
+    },
+    {
+        "question": "// Question 3\nfunction multiply(a, b) {\n    return a * b;\n}\n\nconst factors = [3, 4];\n\nconst product = multiply.apply(null, factors);\n\n// What does 'product' contain after executing this code?",
+        "options": {
+            "a": "12",
+            "b": "[3, 4]",
+            "c": "Error",
+            "d": "undefined"
+        },
+        "correctAnswer": "a",
+        "explanation": "The 'apply' method is used to invoke the 'multiply' function with the elements of the 'factors' array as arguments. It calculates the product, so 'product' contains the value 12."
+    },
+    {
+        "question": "// Question 4\nfunction subtract(a, b) {\n    return a - b;\n}\n\nconst numbers = [10, 5];\n\nconst difference = subtract.call(null, ...numbers);\n\n// What does 'difference' contain after executing this code?",
+        "options": {
+            "a": "5",
+            "b": "[10, 5]",
+            "c": "Error",
+            "d": "undefined"
+        },
+        "correctAnswer": "a",
+        "explanation": "The 'call' method is used to invoke the 'subtract' function with the values in the 'numbers' array as arguments. It calculates the difference, so 'difference' contains the value 5."
+    },
+    {
+        "question": "// Question 1\nconst person = {\n    name: 'Alice',\n    age: 30,\n    city: 'New York'\n};\n\n// How can you create a shallow copy of the 'person' object?",
+        "options": {
+            "a": "const copy = person;",
+            "b": "const copy = Object.assign({}, person);",
+            "c": "const copy = { ...person };",
+            "d": "const copy = JSON.parse(JSON.stringify(person));"
+        },
+        "correctAnswer": "d",
+        "explanation": "Using the spread ('{ ... }') operator creates a shallow copy of the 'person' object with the same properties."
+    },
+    {
+        "question": "// Question 2\nconst car = {\n    make: 'Toyota',\n    model: 'Camry',\n    year: 2022\n};\n\n// How can you delete the 'year' property from the 'car' object?",
+        "options": {
+            "a": "delete car.year;",
+            "b": "car.delete('year');",
+            "c": "car.remove('year');",
+            "d": "car.year = null;"
+        },
+        "correctAnswer": "a",
+        "explanation": "The 'delete' operator is used to delete properties from objects. 'delete car.year;' removes the 'year' property from the 'car' object."
+    },
+    {
+        "question": "// Question 3\n// Which of the following methods creates a new object with 'person' as its prototype?",
+        "options": {
+            "a": "const newPerson = Object.create(person);",
+            "b": "const newPerson = Object.assign({}, person);",
+            "c": "const newPerson = { ...person };",
+            "d": "const newPerson = JSON.parse(JSON.stringify(person));"
+        },
+        "correctAnswer": "a",
+        "explanation": "The 'Object.create()' method creates a new object with the specified prototype, in this case, the 'person' object."
+    },
+    {
+        "question": "// Question 4\n// Which of the following methods directly assigns properties to an object?",
+        "options": {
+            "a": "Object.create()",
+            "b": "Object.keys()",
+            "c": "Object.assign()",
+            "d": "Object.values()"
+        },
+        "correctAnswer": "c",
+        "explanation": "The 'Object.assign()' method is used to directly assign properties to an object."
+    },
+    {
+        "question": "// Question 1\nconst person = {\n    name: 'Alice',\n    age: 30\n};\n\n// How can you check if the 'name' property exists in the 'person' object?",
+        "options": {
+            "a": "'name' in person",
+            "b": "person.hasProperty('name')",
+            "c": "person.contains('name')",
+            "d": "person.hasOwnProperty('name')"
+        },
+        "correctAnswer": "a",
+        "explanation": "The 'in' operator is used to check if a property exists in an object. So, you can use `'name' in person` to check if the 'name' property exists in the 'person' object."
+    },
+    {
+        "question": "// Question 2\nconst car = {\n    make: 'Toyota',\n    model: 'Camry'\n};\n\n// How can you get an array of all property names in the 'car' object?",
+        "options": {
+            "a": "Object.keys(car)",
+            "b": "car.getPropertyNames()",
+            "c": "Object.getOwnPropertyNames(car)",
+            "d": "car.names()"
+        },
+        "correctAnswer": "a",
+        "explanation": "The 'Object.keys()' method returns an array of all property names in the 'car' object."
+    },
+    {
+        "question": "// Question 3\n// What is the purpose of the 'Object.freeze()' method in JavaScript?",
+        "options": {
+            "a": "To add a new property to an object.",
+            "b": "To remove a property from an object.",
+            "c": "To prevent any changes to an object's properties and values.",
+            "d": "To create a new object with the same properties as another object."
+        },
+        "correctAnswer": "c",
+        "explanation": "The 'Object.freeze()' method is used to prevent any changes to an object's properties and values. Once an object is frozen, its properties cannot be added, removed, or modified."
+    },
+    {
+        "question": "// Question 4\nconst person = {\n    name: 'Alice',\n    age: 30\n};\n\n// How can you delete the 'age' property from the 'person' object, and what is the result?",
+        "options": {
+            "a": "delete person.age; // person is { name: 'Alice' }",
+            "b": "delete property person.age; // Error",
+            "c": "person.delete('age'); // Error",
+            "d": "person.remove('age'); // Error"
+        },
+        "correctAnswer": "a",
+        "explanation": "The correct way to delete the 'age' property from the 'person' object is to use the 'delete' operator as shown in option 'a'. After executing this code, 'person' will be left with only the 'name' property."
+    },
+    {
+        "question": "// Question 1\nconst numbers = [1, 2, 3, 4, 5];\n\n// How can you check if the number 3 is included in the 'numbers' array?",
+        "options": {
+            "a": "numbers.has(3);",
+            "b": "numbers.includes(3);",
+            "c": "numbers.contains(3);",
+            "d": "numbers.isIncluded(3);"
+        },
+        "correctAnswer": "b",
+        "explanation": "The 'includes()' method is used to check if an element is included in an array. So, you can use 'numbers.includes(3);' to check if the number 3 is included in the 'numbers' array."
+    },
+    {
+        "question": "// Question 2\nconst fruits = ['apple', 'banana', 'cherry'];\n\n// How can you add the element 'grape' to the end of the 'fruits' array?",
+        "options": {
+            "a": "fruits.append('grape');",
+            "b": "fruits.add('grape');",
+            "c": "fruits.push('grape');",
+            "d": "fruits.insert('grape');"
+        },
+        "correctAnswer": "c",
+        "explanation": "The 'push()' method is used to add an element to the end of an array. So, you can use 'fruits.push('grape');' to add 'grape' to the end of the 'fruits' array."
+    },
+    {
+        "question": "// Question 3\nconst colors = ['red', 'blue', 'green'];\n\n// How can you remove the last element from the 'colors' array?",
+        "options": {
+            "a": "colors.pop();",
+            "b": "colors.removeLast();",
+            "c": "colors.deleteLast();",
+            "d": "colors.splice(-1);"
+        },
+        "correctAnswer": "a",
+        "explanation": "The 'pop()' method is used to remove the last element from an array. So, you can use 'colors.pop();' to remove the last element from the 'colors' array."
+    },
+    {
+        "question": "// Question 4 \n const fruits = ['apple', 'banana', 'cherry'];\n// How can you check the number of elements in the 'fruits' array?",
+        "options": {
+            "a": "fruits.size;",
+            "b": "fruits.count();",
+            "c": "fruits.length;",
+            "d": "fruits.sizeof();"
+        },
+        "correctAnswer": "c",
+        "explanation": "The 'length' property of an array returns the number of elements in the array. So, you can use 'fruits.length;' to check the number of elements in the 'fruits' array."
+    }
+]

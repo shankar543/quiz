@@ -1,64 +1,72 @@
-const quizzdata=[
-{question:'type of null in javascript?',
-options:{
-a:"function",
-b:"object",
-c:"string",
-d:"none of the above",
-answer:"b"}
-},
-{question:'variables of type \'var\' can be redecalred?',
-options:{
-a:"yes",
-b:"no",
-c:"not sure",
-d:"none of the above",
-answer:"a"}
-},
-{question:'which of the below is not a string object function',
-options:{
-a:"subStr",
-b:"substring",
-c:"slice",
-d:"reverse",
-answer:"d"}
-},
-{question:'which of the below functions are not related to iteration of array',
-options:{
-a:"filter",
-b:"map",
-c:"find",
-d:"indexOf",
-answer:"d"}
-},
-{question:'which of the statement not valid inside Array.forEach method?',
-options:{
-a:"declaing a variable",
-b:"assigning value to variable",
-c:"returning a statemet",
-d:"calling a function",
-answer:"c"}
-},
+let quizzdata=[
+
 ];
 let currentQuestionIndex=0;
 const question = document.getElementById("question")
 const radiooptions = document.querySelectorAll(".radioopt")
-
+const container =document.getElementsByClassName("container")[0];
+const submit = document.getElementById('submit');
+container.querySelectorAll('ul li').forEach(li => {
+    li.addEventListener('click', function(e){
+        if (e.target == this) {
+            this.querySelector('input[type="radio"]')?.click();
+        }
+    },false)
+})
+let showAnswersBydefault = false;
 const opt_a = document.getElementById("opt_a");
 const opt_b = document.getElementById("opt_b");
 const opt_c = document.getElementById("opt_c");
 const opt_d = document.getElementById("opt_d");
 
-const container =document.getElementsByClassName("container")[0];
-let score=0;
-function loadQuiz(){
-    resetOptions()
-let qtn = quizzdata[currentQuestionIndex];
+let score = 0;
+async function loadQuizzData() {
+    const response = await fetch('./sample.json');
+    const data = await response.json();
+    return new Promise(function (resolve, reject) {
+        if (data) {
+            resolve(data);
+        } else {
+            reject("failed to load data");
+        }
+    })
+}
+function displayCurrentQuestion() {
+    if(currentQuestionIndex==quizzdata.length){
+     container.innerHTML=`<h3>quizz completed</h3><p>you have scored ${score}/${quizzdata.length}.</p><button onclick='document.location.reload()'>start quizz</button>`
+    return;
+    }
+    resetOptions();
+    let qtn = quizzdata[currentQuestionIndex];
+        question.classList.remove('showinganswer');
+        submit.classList.remove('showanswerenabled');
+    if (container.querySelector(".controls #nextqtnbtn")) {
+        container.querySelector(".controls #nextqtnbtn").remove();
+    }
+    container.querySelectorAll('ul li').forEach(li => {
+        li.style.backgroundColor = 'transparent';
+})
+         question.innerText = "";
 question.innerText = qtn.question;
 opt_a.innerText = qtn.options.a;
 opt_b.innerText = qtn.options.b;
 opt_c.innerText = qtn.options.c;
 opt_d.innerText = qtn.options.d;
+}
+function loadQuiz(){
+    
+    if (!quizzdata?.length) {
+         loadQuizzData().then(data => { 
+         quizzdata = data;
+         displayCurrentQuestion();
+         }).catch(err => {
+             alert("error loading questions" + err);
+         })
+    } else {
+        displayCurrentQuestion();
+    }
+    
+
 }
 function resetOptions(){
     radiooptions.forEach(opt=>{
@@ -66,25 +74,71 @@ function resetOptions(){
     })
 }
 function isAnswered(){
-    let isSelected=false;
+    let isSelected = false;
+    let useranswer = null;
     radiooptions.forEach((opt)=>{
-  if(opt.checked){isSelected = true}
+        if (opt.checked) {
+            isSelected = true
+            useranswer = opt;
+        }
 if(isSelected){
-    opt.value == quizzdata[currentQuestionIndex].options.answer?score++:"";
+    opt.value == quizzdata[currentQuestionIndex].correctAnswer?score++:"";
 }
 });
-return isSelected;
+    return { isSelected ,useranswer};
 }
 function validate(){
-if(isAnswered()){
-    currentQuestionIndex++;
+let {isSelected,useranswer} = isAnswered()
+    if (isSelected) {
     if(currentQuestionIndex==quizzdata.length){
      container.innerHTML=`<h3>quizz completed</h3><p>you have scored ${score}/${quizzdata.length}.</p><button onclick='document.location.reload()'>start quizz</button>`
     return;
     }
-    loadQuiz();
+        if (showAnswersBydefault) {
+            showAnswer(useranswer);
+            return;
+        }
+    if (quizzdata[currentQuestionIndex]?.explanation && confirm("want to check the answers by default?")) {
+        showAnswersBydefault = true;
+        showAnswer(useranswer);
+    } else {
+        currentQuestionIndex++;
+        loadQuiz();
+    }
 }else{
     alert("you should answer current question")
 }
+}
+function showAnswer(useranswer) {
+    if (useranswer.value == quizzdata[currentQuestionIndex]?.correctAnswer) {
+        useranswer.parentElement.style.backgroundColor = "green";
+    } else {
+        useranswer.parentElement.style.backgroundColor = "red";
+    }
+radiooptions.forEach((opt)=>{
+if(opt.value == quizzdata[currentQuestionIndex].correctAnswer){
+    opt.parentElement.style.backgroundColor="green"
+}
+});
+    question.innerHTML=""
+    let showAnswerText =  quizzdata[currentQuestionIndex]?.explanation;
+      showAnswerText.split('\n').forEach(line => {
+          let tab = document.createElement('div');
+          tab.classList.add('explination_steps');
+          tab.innerText = line;
+          question.appendChild(tab);
+    })
+    question.classList.add('showinganswer');
+    submit.classList.add('showanswerenabled');
+    let nextqtn = document.createElement("button");
+    nextqtn.setAttribute("id", 'nextqtnbtn');
+    nextqtn.innerText = "next question";
+    nextqtn.onclick = () => {
+        currentQuestionIndex++;
+        loadQuiz();
+    }
+    if (!container.querySelector(".controls #nextqtnbtn")) {
+        container.querySelector('.controls').appendChild(nextqtn);
+    }
 }
 loadQuiz();
