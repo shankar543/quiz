@@ -10,7 +10,7 @@
 body {
     width: auto;
     background-color: #1c92d2;
-    font-size: 1.6em;
+    font-size: 1.2em;
     height: 100%;
     overflow: auto;
     width: auto;
@@ -24,7 +24,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
     width: 100%;
     align-items: center;
     font-family: 'Roboto';
@@ -54,9 +53,13 @@ body {
     justify-content: space-between;
     align-content: center;
     max-width: 100%;
-    overflow: auto;
     box-shadow: 0 0 13px 4px rgba(0, 0, 0, 0.7);
     max-height: 100%;
+    width: 70%;
+    height: auto;
+    /* overflow: auto; */
+    position: relative;
+
 }
 
 .container ul {
@@ -112,15 +115,36 @@ body {
     max-height: 73%;
     position: sticky;
     height: auto;
-
+    min-height: 40%;
     word-wrap: break-word;
     top: 0;
+}
+
+.toggle_q_a {
+    position: absolute;
+    top: -21%;
+    right: 0;
+    padding: 0.5em;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 33;
 }
 
 #question.showinganswer {
     background-color: green;
     color: white;
     height: 100%;
+}
+
+#question.showinganswer .toggle_q_a {
+    display: block;
+}
+
+#question.showinganswer::first-letter {
+    color: blue;
 }
 
 #question::first-letter {
@@ -184,7 +208,7 @@ h1 {
     text-align: left;
     background-color: black;
     color: white;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 2px;
     overflow: auto;
 }
@@ -217,4 +241,12 @@ h1 {
 .showanswerenabled {
     pointer-events: none;
     cursor: not-allowed;
+}
+
+@media screen and (max-width:350px) {
+    body {
+        font-size: .6em;
+        font-weight: 300;
+    }
+
 }

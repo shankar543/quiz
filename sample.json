@@ -1,77 +1,7 @@
 [
+   
     {
-    "question": "type of null in javascript?",
-    "options": {
-      "a": "function",
-      "b": "object",
-      "c": "string",
-      "d": "none of the above"
-    },
-    "correctAnswer": "b"
-  },
-  {
-    "question": "variables of type 'var' can be redeclared?",
-    "options": {
-      "a": "yes",
-      "b": "no",
-      "c": "not sure",
-      "d": "none of the above"
-    },
-    "correctAnswer": "a"
-  },
-  {
-    "question": "which of the below is not a string object function",
-    "options": {
-      "a": "subStr",
-      "b": "substring",
-      "c": "slice",
-      "d": "reverse"
-    },
-    "correctAnswer": "d"
-  },
-  {
-    "question": "which of the below functions are not related to iteration of array",
-    "options": {
-      "a": "filter",
-      "b": "map",
-      "c": "find",
-      "d": "indexOf"
-    },
-    "correctAnswer": "d"
-  },
-  {
-    "question": "which of the statement is not valid inside Array.forEach method?",
-    "options": {
-      "a": "declaring a variable",
-      "b": "assigning value to a variable",
-      "c": "returning a statement",
-      "d": "calling a function"
-    },
-    "correctAnswer": "c"
-  }
-,
-    {
-        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = function objectchangerfunction() {\n    return this.name + ' ' + this.surname;\nconsole.log(obj.fullname()) \n what is the output of console log}",
-        "options": {
-            "a": "vijay janapareddi",
-            "b": "undefined",
-            "c": "error",
-            "d": "none of the above"
-        },
-        "correctAnswer": "a"
-    },
-    {
-        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = function() {\n    return this.name + ' ' + this.surname;\n}\nconsole.log(obj.fullname()) \n what is the output of console log",
-        "options": {
-            "a": "vijay janapareddi",
-            "b": "undefined",
-            "c": "error",
-            "d": "none of the above"
-        },
-        "correctAnswer": "a"
-    },
-    {
-        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = () => {\n    return this.name + ' ' + this.surname;\nconsole.log(obj.fullname()) \n what is the output of console log}",
+        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = () => {\n    return this.name + ' ' + this.surname;\nconsole.log(obj.fullname())} \n what is the output of console log?",
         "options": {
             "a": "vijay janapareddi",
             "b": "undefined undefined",
@@ -133,6 +63,76 @@
         },
         "correctAnswer": "c",
         "explanation": "In JavaScript, when you create an object using 'Object.create(obj)', the resulting 'person' object inherits properties from 'obj' but does not have any own properties. Therefore, 'Object.keys(person)' returns an empty array, and the length of that array is 0. So, the correct answer is 0, indicating that 'person' has no own properties."
+    },
+     {
+    "question": "type of null in javascript?",
+    "options": {
+      "a": "function",
+      "b": "object",
+      "c": "string",
+      "d": "none of the above"
+    },
+    "correctAnswer": "b"
+  },
+  {
+    "question": "variables of type 'var' can be redeclared?",
+    "options": {
+      "a": "yes",
+      "b": "no",
+      "c": "not sure",
+      "d": "none of the above"
+    },
+    "correctAnswer": "a"
+  },
+  {
+    "question": "which of the below is not a string object function",
+    "options": {
+      "a": "subStr",
+      "b": "substring",
+      "c": "slice",
+      "d": "reverse"
+    },
+    "correctAnswer": "d"
+  },
+  {
+    "question": "which of the below functions are not related to iteration of array",
+    "options": {
+      "a": "filter",
+      "b": "map",
+      "c": "find",
+      "d": "indexOf"
+    },
+    "correctAnswer": "d"
+  },
+  {
+    "question": "which of the statement is not valid inside Array.forEach method?",
+    "options": {
+      "a": "declaring a variable",
+      "b": "assigning value to a variable",
+      "c": "returning a statement",
+      "d": "calling a function"
+    },
+    "correctAnswer": "c"
+  },
+    {
+        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = function objectchangerfunction() {\n    return this.name + ' ' + this.surname;\nconsole.log(obj.fullname())} \n what is the output of console log?",
+        "options": {
+            "a": "vijay janapareddi",
+            "b": "undefined",
+            "c": "error",
+            "d": "none of the above"
+        },
+        "correctAnswer": "a"
+    },
+    {
+        "question": "let obj = {}\nobj.name = 'vijay';\nobj['age'] = 22;\nobj.surname = 'janapareddi';\nobj.fullname = function() {\n    return this.name + ' ' + this.surname;\n}\nconsole.log(obj.fullname()) \n what is the output of console log",
+        "options": {
+            "a": "vijay janapareddi",
+            "b": "undefined",
+            "c": "error",
+            "d": "none of the above"
+        },
+        "correctAnswer": "a"
     },
     {
         "question": "// Question 1\nlet person = {\n    name: 'John',\n    age: 30\n};\n\nlet student = Object.create(person);\n\n// What is the prototype of the 'student' object?",
